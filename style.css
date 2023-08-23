@@ -1,3 +1,17 @@
+button.getbutton {
+    background-color: #0076FF;
+    outline: none;
+    border: none;
+    height: 30px;
+    width: 65px;
+    border-radius: 999999999px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 5px;
+
+
+    
+}
 body {
     -webkit-user-select: none;
     user-select: none;
@@ -23,22 +37,35 @@ body * {
 
 .app {
     position: absolute;
-    top: 110px;
-    padding-left: 15px;
+    top: 85px;
     left: 0;
     right: 0;
     width: 98.5%;
     overflow-y: scroll;
-    
-    height: 98.5%;
+    margin-top: 1%;
+
+    height: 84.5%;
 }
+.app h1,h2,h3,h4,h5,h6,a,p,span {
+    padding-left: 18px;
+    overflow-wrap: break-word;
+}
+
 .app * {
     color: white;
 
     font-family: Helvetica, Arial, sans-serif;
 }
 
-
+.appsPage {
+    display: none;
+}
+.aboutPage {
+    display: none;
+}
+.visible {
+    display: block;
+}
 
 
 .bottomBar {
@@ -84,10 +111,11 @@ body * {
 
 .bottomBar .page div {
     
-    margin: 10px 10px;
-    width: 27px;
-    height: 27px;
+
     background-color: #929292;
+    margin: 5px 5px;
+    width: 30px;
+    height: 30px;
 
 }
 .bottomBar .page div.appsicon {
@@ -98,7 +126,12 @@ body * {
     mask: url(/about.svg) no-repeat center / contain;
     -webkit-mask: url(/about.svg) no-repeat center / contain;
 }
-
+.bottomBar .page .selectedSvg {
+    background-color: #0076FF;
+}
+.bottomBar .selected {
+    color: #0076FF;
+}
 
 .topbar {
     top: 1px;
@@ -126,12 +159,58 @@ body * {
     bottom: 0.2px;
 }
 
+div.dropdown {
+
+    background-color: #1C1C1D;
+    border: solid #3E3E3F 1px;
+    width: 100%;
+    display: inline-block;
+}
+div.dropdown div.elems {
+    max-height: 0px;
+    display: none;
+    
+}
+div.dropdown div.elems.visible {
+    display: block;
+   
+
+}
+div.dropdown div.activator {
+    height: 80px;
+
+
+}
+div.dropdown div.activator span.name {
+    display: flex;
+
+    position: absolute;
+    margin-top: -55px;
+    margin-left: 65px;
+
+}
+
+.iconopenclose {
+    position: absolute;
+    right: 22px;
+    margin-top: -55px;
+}
+.iconopenclose_opened {
+    rotate: 180deg;
+    margin-top: -57.3px;
+}
+
 
 /* For small screens */
 @media (max-width: 768px) {
     .bottomBar .page {
       flex-direction: column;
       font-size: 14px;
+    }
+    .bottomBar .page div {
+        margin: 4px 4px;
+        width: 50px;
+        height: 50px;
     }
   
 
