@@ -60,8 +60,6 @@ body {
     margin: 10px 10px;
     width: 27px;
     height: 27px;
-
-    
     background-color: #929292;
 
 }
@@ -76,10 +74,10 @@ body {
 
 
 .topbar {
-    position: fixed;
-    
     top: 0;
     left: 0;
+    position: fixed;
+
     width: 100%;
     background-color: rgba(39, 39, 39, 0.45);
     height: 55px;
