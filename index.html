@@ -6,16 +6,20 @@
     <link rel="stylesheet" href="style.css">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="CoolStore">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     
     <title>CoolStore</title>
 </head>
 <div class="bottomBar">
-    <div class="page"><div class="appsicon"></div>Apps</div>
+    <div class="page" onclick="window.location.href = '/#apps'"><div class="appsicon"></div>Apps</div>
     <div class="page"><div class="abouticon"></div>About</div>
 </div>
+
 <body>
+    <div class="topbar"><h3>CoolStore</h3></div>
     <div class="app">
-        <h1>CoolStore</h1>
+        <div id="appsPage">
+        </div>
     </div>
 </body>
 </html>
