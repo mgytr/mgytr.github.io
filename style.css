@@ -30,7 +30,7 @@ body * {
     width: 98.5%;
     overflow-y: scroll;
     
-    height: 85%;
+    height: 98.5%;
 }
 .app * {
     color: white;
@@ -40,13 +40,14 @@ body * {
 
 
 
+
 .bottomBar {
     
     z-index: 9999;
     min-height: 55px;
     background-color: rgba(39, 39, 39, 0.45);
-    -webkit-backdrop-filter: blur(90pt);
-    backdrop-filter: blur(90pt);
+    -webkit-backdrop-filter: blur(90px);
+    backdrop-filter: blur(90px);
     width: 100%;
     height: 5%;
     position: fixed;
@@ -100,8 +101,10 @@ body * {
 
 
 .topbar {
-    top: 0;
-    left: 0;
+    top: 1px;
+    bottom: -1px;
+    left: 1px;
+    right: -1px;
     position: fixed;
 
     width: 100%;
