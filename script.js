@@ -78,7 +78,7 @@ function openDropdown(opener) {
             console.log(i*1.2)
             setTimeout(() => {
             console.log(`Height: ${i}`)
-            elemsDiv.style.maxHeight = i + 'px'}, i)
+            elemsDiv.style.maxHeight = i + 'px'}, i/2)
         }
     }
     else {
@@ -91,7 +91,7 @@ function openDropdown(opener) {
             if (height-i-1  === 0) {
                 elemsDiv.className = 'elems'
             }
-            elemsDiv.style.maxHeight = height-i-1 + 'px'}, i)
+            elemsDiv.style.maxHeight = height-i-1 + 'px'}, i/2)
 
         }
         
