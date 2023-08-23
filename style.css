@@ -57,6 +57,7 @@ body {
 
 
 .bottomBar .page div {
+    
     margin: 10px 10px;
     width: 27px;
     height: 27px;
@@ -80,13 +81,18 @@ body {
 
     width: 100%;
     background-color: rgba(39, 39, 39, 0.45);
-    height: 55px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(90pt);
+    z-index: 9999;
+    outline: solid #202020db;
+
+    
 
 } 
+
 
 /* For small screens */
 @media (max-width: 768px) {
