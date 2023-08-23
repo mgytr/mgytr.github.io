@@ -39,16 +39,16 @@ body {
 
     justify-content: center;
     align-items: center;
-    font-size: 19px;
+    font-size: 15.5px;
     color: #929292;
 
 }
 
 
 .bottomBar .page div {
-    margin: 5px 5px;
-    width: 31px;
-    height: 31px;
+    margin: 10px 10px;
+    width: 27px;
+    height: 27px;
     background-color: #929292;
 
 }
