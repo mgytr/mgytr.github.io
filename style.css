@@ -6,6 +6,8 @@ body {
     background-color: black;
     color: white;
     font-family: Helvetica, Arial, sans-serif;
+    height: 100vh;
+    margin-top: 1%;
 }
 * {
     color: white;
@@ -32,7 +34,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    
+
     outline: solid #202020db;
     display: flex;
     justify-content: center;
