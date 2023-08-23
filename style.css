@@ -7,6 +7,7 @@ body {
     color: white;
     font-family: Helvetica, Arial, sans-serif;
     height: 100vh;
+    overflow: hidden;
 
 
 }
@@ -14,6 +15,15 @@ body {
     color: white;
 
     font-family: Helvetica, Arial, sans-serif;
+    overflow-y: none;
+}
+body * {
+    overflow-y: none;
+}
+
+.app {
+    width: 100%;
+    overflow-y: scroll;
 }
 .app * {
     color: white;
@@ -32,7 +42,7 @@ body {
     width: 100%;
     height: 5%;
     position: fixed;
-    bottom: -0.5vh;
+    bottom: -0.35vh;
     left: 0;
     right: 0;
 
