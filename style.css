@@ -7,8 +7,9 @@ button.getbutton {
     border-radius: 999999999px;
     font-weight: bold;
     font-size: 16px;
-    margin-top: 5px;
-    margin-left: 12px;
+    margin-top: -9px;
+    margin-left: 19px;
+
 
 
     
@@ -170,8 +171,21 @@ div.dropdown {
 div.dropdown div.elems {
     max-height: 0px;
     display: none;
+    padding-left: 12px;
     
 }
+
+div.dropdown div.elems div p {
+    font-size: 23px;
+}
+div.dropdown div.elems div p.desc {
+    font-size: 14px;
+    margin-top: -18px;
+    color: #808080;
+}
+
+
+
 div.dropdown div.elems.visible {
     display: block;
    
@@ -190,6 +204,7 @@ div.dropdown div.activator span.name {
     margin-left: 65px;
 
 }
+
 
 .iconopenclose {
     position: absolute;

@@ -52,7 +52,7 @@ function downloadURL(url) {
     installbox.style.display = 'flex'
     installbox.style.alignItems = 'center'
 
-    installbox.innerHTML = '<img src="/load.gif" height="25px" style="position: fixed;padding-left: 25px"><div style="display: flex; width: 100%; justify-content: center"><p>Installing</p></div>'
+    installbox.innerHTML = '<img src="/load.gif" height="25px" style="position: fixed;padding-left: 25px"><div style="display: flex; width: 100%; justify-content: center"><p>Downloading</p></div>'
     inspopup.appendChild(installbox)
 
     document.body.appendChild(inspopup)
