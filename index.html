@@ -44,16 +44,16 @@
                 </div>
                 <div class="elems">
                     <div>
-                        <span>Jaility</span>
-                        <br>
+                        <p>Jaility</p>
+                        <p class="desc">Tools like respring (no jailbreak)</p>
                         <button class="getbutton" onclick="installURL('https://api.jailbreaks.app/install/Jaility')">GET</button>
                     </div>
 
                     <br>
 
                     <div>
-                        <span>TrollStore arm64e (14.0 stable to 14.8.1 stable & 15.6 beta 1-5)</span>
-                        <br>
+                        <p>TrollStore arm64e (14.0 stable to 14.8.1 stable & 15.6 beta 1-5)</p>
+                        <p class="desc">Unsigned iPA/TiPA installer without expiring for arm64e</p>
                         <button class="getbutton" onclick="installURL('https://api.jailbreaks.app/troll64e')">GET</button>
                     </div>
 
@@ -61,24 +61,50 @@
 
                     <div>
 
-                        <span>TrollStore (15.0 stable/beta to 15.5 beta 1-4)</span>
-                        <br>
+                        <p>TrollStore (15.0 stable/beta to 15.5 beta 1-4)</p>
+                        <p class="desc">Unsigned iPA/TiPA installer without expiring for arm64</p>
                         <button class="getbutton" onclick="installURL('https://api.jailbreaks.app/troll')">GET</button>
                     </div>
             
                     <br>
 
                     <div>
-                        span>App Installer</span>
-                        <br>
+                        <p>App Installer</p>
+                        <p class="desc">iPA installer via URL's</p>
                         <button class="getbutton" onclick="installURL('itms-services://?action=download-manifest&url=https://file.jb-apps.me/plist/AppInstaller_lol.plist')">GET</button>
                     </div>
+                    <br>
         
                 </div>
             </div>
             
             <br>
-            <p>IPA and TIPA files (install ONLY via TrollStore)</p>
+            <p>iPA and TiPA files (install ONLY via TrollStore)</p>
+            <div class="dropdown">
+                <div class="activator" onclick="openDropdown(this)">
+                    <img src="/customization.png" class="icon" height="80%" style="margin-top: 7px; padding-left: 9px;">
+                    <span class="name">Customization</span>
+                    <div class="iconopenclose">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </div>
+
+                </div>
+                <div class="elems">
+                    <div>
+                        <p>Cowabunga</p>
+                        <p class="desc">iOS tweaker</p>
+
+                        <button class="getbutton" onclick="downloadURL('https://github.com/leminlimez/Cowabunga/releases/download/v10.3.2/Cowabunga.ipa')">GET</button>
+                    </div>
+
+                    <br>
+
+
+        
+                </div>
+            </div>
             <div class="dropdown">
                 <div class="activator" onclick="openDropdown(this)">
                     <img src="/utilities.svg" class="icon" height="80%" style="margin-top: 7px; padding-left: 9px;">
@@ -91,14 +117,22 @@
 
                 </div>
                 <div class="elems">
+
                     <div>
-                        <span>AppStore++</span>
-                        <br>
-                        <button class="getbutton" onclick="downloadURL('https://github.com/CokePokes/AppStorePlus-TrollStore/raw/main/AppStore%2B%2B_TrollStore_v1.0.3-1.ipa')">GET</button>
+                        <p>Dopamine</p>
+                        <p class="desc">Rootless arm64e jailbreak. iOS 15.0 - 15.4.1</p>
+                        <button class="getbutton" onclick="downloadURL('https://github.com/opa334/Dopamine/releases/download/1.1.5/Dopamine.tipa')">GET</button>
                     </div>
+
+
+
+                    <br>
+
+
         
                 </div>
             </div>
+
             
             
         </div>
