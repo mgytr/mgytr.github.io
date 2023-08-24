@@ -25,7 +25,7 @@ function onAboutPageClick() {
     containerApps.className = 'page'
 }
 
-function installURL(url) {
+function downloadURL(url) {
     const inspopup = document.createElement('div')
 
     inspopup.style.position = 'fixed'
@@ -53,6 +53,44 @@ function installURL(url) {
     installbox.style.alignItems = 'center'
 
     installbox.innerHTML = '<img src="/load.gif" height="25px" style="position: fixed;padding-left: 25px"><div style="display: flex; width: 100%; justify-content: center"><p>Installing</p></div>'
+    inspopup.appendChild(installbox)
+
+    document.body.appendChild(inspopup)
+    setTimeout(() => {
+        document.location = url
+        setTimeout(() => [
+            inspopup.remove()
+        ])
+    }, 1000)
+}
+function installURL(url) {
+    const inspopup = document.createElement('div')
+
+    inspopup.style.position = 'fixed'
+    inspopup.style.left = '0'
+    inspopup.style.right = '0'
+    inspopup.style.top = '0'
+    inspopup.style.bottom = '0'
+    inspopup.style.width = '100%'
+    inspopup.style.height = '100%'
+    inspopup.style.backgroundColor = 'rgba(0, 0, 0, 0.45)'
+    inspopup.style.zIndex = '9999999999999999999999999999999999999999'
+    inspopup.style.display = 'flex'
+    inspopup.style.justifyContent = 'center'
+    inspopup.style.alignItems = 'center'
+
+    const installbox = document.createElement('div')
+    
+
+    installbox.style.width = '310px'
+    installbox.style.height = '75px'
+    installbox.style.borderRadius = '12px'
+    installbox.style.backgroundColor = '#1f1f1f'
+
+    installbox.style.display = 'flex'
+    installbox.style.alignItems = 'center'
+
+    installbox.innerHTML = '<img src="/load.gif" height="25px" style="position: fixed;padding-left: 25px"><div style="display: flex; width: 100%; justify-content: center"><p>Downloading</p></div>'
     inspopup.appendChild(installbox)
 
     document.body.appendChild(inspopup)

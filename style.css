@@ -8,6 +8,7 @@ button.getbutton {
     font-weight: bold;
     font-size: 16px;
     margin-top: 5px;
+    margin-left: 12px;
 
 
     
@@ -162,9 +163,9 @@ body * {
 div.dropdown {
 
     background-color: #1C1C1D;
-    border: solid #3E3E3F 1px;
+    border: #3E3E3F solid 1px;
     width: 100%;
-    display: inline-block;
+
 }
 div.dropdown div.elems {
     max-height: 0px;
