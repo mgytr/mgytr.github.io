@@ -37,8 +37,13 @@ body {
     height: 60px;
     width: 220px;
     font-size: 19px;
-    margin-top: 50%;
 
+}
+.bottom {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 * {
     color: white;
@@ -51,8 +56,35 @@ body * {
 }
 
 
+.optionsPopup {
+    position: fixed;
+    z-index: 99999;
+    left: 50%;
+    top: 51.6%;
+    transform: translate(-50%, -50%);
+    background-color: #1e1e1e;
+    width: 90%;
+    height: 92%;
+    border-radius: 15px;
+    text-align: left;
+    display: none;
+}
+.optionsPopup.visible {
+    display: unset;
+}
+.optionsPopup div.option {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
 
-
+.optionsPopup div.option div {
+    position: absolute;
+    right: 30px;
+}
+.optionsPopup div.option p {
+    padding-left: 20px;
+}
 div.dropdown {
 
     background-color: #1C1C1D;
@@ -108,3 +140,42 @@ div.dropdown div.activator span.name {
     margin-top: -57.3px;
 }
 
+.toggle-switch, .toggle-switch .toggle-knob {
+    -moz-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
+}
+
+.toggle-switch {
+    height: 30px;
+    width: 55px;
+    display: inline-block;
+    background-color: rgb(56,55,59);
+    margin: 2px;
+    margin-bottom: 5px;
+    border-radius: 30px;
+    cursor: pointer;
+
+    box-shadow: inset 1px 1px 9px -3px rgba(4, 4, 4, 0.08), 1px 2px 6px -2px rgba(0, 0, 0, 0.01);
+}
+
+.toggle-switch .toggle-knob {
+    width: 28px;
+    height: 26px;
+    display: inline-block;
+    background-color: #ffffff;
+    border: solid 1px rgba(126, 126, 126, 0.07);
+    box-shadow: 0 1px 3px rgba(107, 106, 106, 0.26), 0 5px 1px rgba(107, 106, 106, 0.13);
+    border-radius: 26px;
+    margin: 1px 1px;
+}
+
+.toggle-switch.active {
+    background-color: #77e189;
+    border: solid 1px transparent;
+}
+
+.toggle-switch.active .toggle-knob {
+    margin-left: 24px;
+}
