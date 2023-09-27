@@ -36,7 +36,7 @@ async function fakeJailbreakConsole () {
     elem.style.top = '0'
     document.body.appendChild(elem)
     await sleep(8000)
-    window.close()
+    window.location.replace('done.html')
 
     
     
