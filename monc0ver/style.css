@@ -179,3 +179,16 @@ div.dropdown div.activator span.name {
 .toggle-switch.active .toggle-knob {
     margin-left: 24px;
 }
+
+.logs {
+    text-align: left;
+    padding: 10px 10px;
+    background-color: #1e1e1e;
+    width: 70%;
+    height: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 13px;
+    overflow: scroll;
+}
