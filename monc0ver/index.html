@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="monc0ver">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css">
+    
+
+
+    <title>monc0ver</title>
+</head>
+
+
+<body>
+    <h1>monc0ver</h1>
+    <br>
+    <div class="bottom">
+    <button class="jailbreakbtn">Jailbreak</button>
+    <br><br>
+    <a href="#" onclick="optionsPopup()">Options</a>
+    </div>
+    <div class="optionsPopup">
+        <img src="close.png" width='25' style="position: absolute; right: 9px; top: 9px;" onclick="document.querySelector('.optionsPopup').className = 'optionsPopup'">
+        <div style="height: 32px;"></div>
+        <div class="option">
+            <p>Rootful</p>
+            <div>
+            <span class="toggle-switch" onclick="if (this.className === 'toggle-switch') {this.className = 'toggle-switch active'} else {this.className = 'toggle-switch'}">
+                <span class="toggle-knob"></span>
+            </span>
+            </div>
+        </div>
+        <div class="option">
+            <p>Safe Mode</p>
+            <div>
+            <span class="toggle-switch" onclick="if (this.className === 'toggle-switch') {this.className = 'toggle-switch active'} else {this.className = 'toggle-switch'}">
+                <span class="toggle-knob"></span>
+            </span>
+            </div>
+        </div>
+        <div class="option">
+
+            <p>Reset RootFS</p>
+            <div>
+            <span class="toggle-switch" onclick="if (this.className === 'toggle-switch') {this.className = 'toggle-switch active'} else {this.className = 'toggle-switch'}">
+                <span class="toggle-knob"></span>
+            </span>
+            </div>
+        </div>
+        <div class="option">
+            <p>Refresh icon cache</p>
+            <div>
+            <span class="toggle-switch" onclick="if (this.className === 'toggle-switch') {this.className = 'toggle-switch active'} else {this.className = 'toggle-switch'}">
+                <span class="toggle-knob"></span>
+            </span>
+            </div>
+        </div>
+        <div class="option">
+            <p>Load Tweaks</p>
+            <div>
+            <span class="toggle-switch active" onclick="if (this.className === 'toggle-switch') {this.className = 'toggle-switch active'} else {this.className = 'toggle-switch'}">
+                <span class="toggle-knob"></span>
+            </span>
+            </div>
+        </div>
+        <div class="option">
+            <p>Load Daemons</p>
+            <div>
+            <span class="toggle-switch active" onclick="if (this.className === 'toggle-switch') {this.className = 'toggle-switch active'} else {this.className = 'toggle-switch'}">
+                <span class="toggle-knob"></span>
+            </span>
+            </div>
+        </div>
+        <div class="option">
+            <p>Reload Daemons</p>
+            <div>
+            <span class="toggle-switch active" onclick="if (this.className === 'toggle-switch') {this.className = 'toggle-switch active'} else {this.className = 'toggle-switch'}">
+                <span class="toggle-knob"></span>
+            </span>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
