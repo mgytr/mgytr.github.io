@@ -1,0 +1,110 @@
+button.getbutton {
+    background-color: #0076FF;
+    outline: none;
+    border: none;
+    height: 30px;
+    width: 65px;
+    border-radius: 999999999px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: -9px;
+    margin-left: 19px;
+
+
+
+    
+}
+body {
+    margin-top: 50px;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    background-color: black;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+
+
+}
+.jailbreakbtn {
+    background-color: #0076FF;
+    outline: none;
+    border: none;
+    border-radius: 999999px;
+    height: 60px;
+    width: 220px;
+    font-size: 19px;
+    margin-top: 50%;
+
+}
+* {
+    color: white;
+
+    font-family: Helvetica, Arial, sans-serif;
+    overflow: hidden;
+}
+body * {
+    overflow-y: hidden;
+}
+
+
+
+
+div.dropdown {
+
+    background-color: #1C1C1D;
+    border: #3E3E3F solid 1px;
+    width: 100%;
+
+}
+div.dropdown div.elems {
+    max-height: 0px;
+    display: none;
+    padding-left: 12px;
+    
+}
+
+div.dropdown div.elems div p {
+    font-size: 23px;
+}
+div.dropdown div.elems div p.desc {
+    font-size: 14px;
+    margin-top: -18px;
+    color: #808080;
+}
+
+
+
+div.dropdown div.elems.visible {
+    display: block;
+   
+
+}
+div.dropdown div.activator {
+    height: 80px;
+
+
+}
+div.dropdown div.activator span.name {
+    display: flex;
+
+    position: absolute;
+    margin-top: -55px;
+    margin-left: 65px;
+
+}
+
+
+.iconopenclose {
+    position: absolute;
+    right: 22px;
+    margin-top: -55px;
+}
+.iconopenclose_opened {
+    rotate: 180deg;
+    margin-top: -57.3px;
+}
+
