@@ -36,7 +36,14 @@ async function fakeJailbreakConsole () {
     elem.style.top = '0'
     document.body.appendChild(elem)
     await sleep(8000)
-    window.location.replace('done.html')
+    document.body.innerHTML = `<style>
+    body {
+        background-color: black;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+<br><br><br>monc0ver Jailbreak completed!<br>Exit from this message by pressing the home button, or using the home bar`
 
     
     
