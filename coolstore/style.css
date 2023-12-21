@@ -121,12 +121,12 @@ body * {
 
 }
 .bottomBar .page div.appsicon {
-    mask: url(apps.svg) no-repeat center / contain;
-    -webkit-mask: url(apps.svg) no-repeat center / contain;
+    mask: url(/coolstore/apps.svg) no-repeat center / contain;
+    -webkit-mask: url(/coolstore/apps.svg) no-repeat center / contain;
 }
 .bottomBar .page div.abouticon {
-    mask: url(about.svg) no-repeat center / contain;
-    -webkit-mask: url(about.svg) no-repeat center / contain;
+    mask: url(/coolstore/about.svg) no-repeat center / contain;
+    -webkit-mask: url(/coolstore/about.svg) no-repeat center / contain;
 }
 .bottomBar .page .selectedSvg {
     background-color: #0076FF;
