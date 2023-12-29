@@ -183,7 +183,8 @@ div.dropdown div.elems div span.author {
     color: #aaaaaa;
 }
 div.dropdown div.elems div span.author a {
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 14px;
     color: #1064ff;
 }
 
