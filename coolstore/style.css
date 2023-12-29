@@ -182,7 +182,7 @@ div.dropdown div.elems div span.author {
     font-size: 14px;
     color: #aaaaaa;
 }
-div.dropdown div.elems div a {
+div.dropdown div.elems div a.author {
 
     font-size: 22px;
     color: #1064ff;
