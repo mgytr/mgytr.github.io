@@ -178,6 +178,18 @@ div.dropdown div.elems {
 div.dropdown div.elems div p {
     font-size: 23px;
 }
+div.dropdown div.elems div span.author {
+    font-size: 14px;
+    color: #aaaaaa;
+}
+div.dropdown div.elems div span.author a {
+    font-weight: bolder;
+    color: #1064ff;
+}
+
+div.dropdown div.elems div span.author a[href]:hover {
+    color: #2e77ff;
+}
 div.dropdown div.elems div p.desc {
     font-size: 14px;
     margin-top: -18px;
