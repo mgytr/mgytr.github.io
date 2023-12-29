@@ -193,7 +193,7 @@ div.dropdown div.elems div a[href]:hover {
 }
 div.dropdown div.elems div p.desc {
     font-size: 14px;
-    margin-top: -9px;
+    margin-top: 3px;
     color: #808080;
 }
 
