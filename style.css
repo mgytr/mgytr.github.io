@@ -1,0 +1,18 @@
+body {
+    background-color: rgb(20, 20, 20);
+    color: rgb(204, 198, 198);
+    font-family: Terminal;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(255, 148, 148); }
+}
+
+div.text .cursor {
+    padding-right: 5px;
+    width: fit-content;
+    border-right: .40em solid rgb(255, 148, 148); /* The typwriter cursor */
+    animation: 
+        blink-caret .75s step-end infinite;
+}
