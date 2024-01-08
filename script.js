@@ -82,8 +82,11 @@ var commands = {
     'projects': () => {
         printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="/coolstore">CoolStore</a> - Cool iOS apps not in the App Store<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - Fake iOS jailbreak what you can use to troll someone')
     },
+    'clear': () => {
+        document.querySelector('div.text').innerHTML = '<span>'
+    },
     'help': () => {
-        printText('Avalible commands:<br>whoami<br>neofetch<br>discord<br>help<br>projects<br>')
+        printText('Avalible commands:<br>whoami<br>neofetch<br>discord<br>clear<br>projects<br>help<br>')
     },
     'discord': () => {
         printText('Discord: @MoneyGrabYT', true, 'rgb(76, 116, 217)')
