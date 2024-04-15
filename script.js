@@ -112,9 +112,9 @@ var ip = ''
 async function shell() {
     // cmdprompt = () => {printText(`[${ip}@mgyt.cf]:~ $ `, false)}
     // ip = await getIP() 
-    cmdprompt = () => {printText(`[you@mgyt.cf]:~ $ `, false)}
+    cmdprompt = () => {printText(`[you@mgyt.xyz]:~ $ `, false)}
     commands['neofetch']()
-    printText('Last site update: 1/8/2024')
+    printText('Last site update: Monday, April 15')
 
     cmdprompt()
     window.scrollTo(0, document.body.scrollHeight)
