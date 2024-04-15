@@ -80,7 +80,7 @@ var commands = {
         printText('<br><img src="/me.jpg" width=160, height=160 style="padding-left: 20px"></img><div style="padding-left: 220px; margin-top:-160px">OS: MacOS<br>Kernel: JavaScript<br>RAM: 8 GB<br>SSD: 128 GB<br>Host: Apple MacBook Air 2018 13-inch<br>Shell: ZSH<br>CPU: Intel i5-8210Y (4) @ 1.610GHz<br>GPU: Intel(R) UHD Graphics 617</div><br><br><a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
     },
     'projects': () => {
-        printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="/coolstore">CoolStore</a> - Cool iOS apps not in the App Store<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - Fake iOS jailbreak what you can use to troll someone')
+        printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="/coolstore">CoolStore</a> - unofficial iOS app store (APPS NOT MADE BY ME!)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - jelbrek ios 1-21 ipados wachos tvos makos visonos fridgeos')
     },
     'clear': () => {
         document.querySelector('div.text').innerHTML = '<span>'
