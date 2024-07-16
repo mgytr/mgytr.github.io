@@ -74,7 +74,28 @@ async function keydown(event) {
     }
 
 }
-document.addEventListener('keydown', (event) => {keydown(event)})
+var previnp = '';
+
+eleminp.addEventListener('keyup', function(event) {
+    key = event.key;
+    keyCode = event.keyCode;
+
+    if ('ontouchstart' in document.documentElement) {
+        //touch device fix
+        if (event.keyCode == 0 || event.keyCode == 229) {
+            key = event.target.value.slice(-1);
+            keyCode = key.charCodeAt(0);
+        }
+        if (event.key === 'Unidentified' && previnp.length > eleminp.value.length) {
+            key = 'Backspace';
+            keyCode = 8;
+        }
+        
+    }
+    previnp = eleminp.value;
+
+    keydown({'key': key, 'keyCode': keyCode})
+});
 
 
 var commands = {
