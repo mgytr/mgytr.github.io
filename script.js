@@ -135,6 +135,7 @@ async function execcmd(cmd) {
     setTimeout(() => {window.scrollTo(0, document.body.scrollHeight)}, 10)
 }
 var ip = ''
+
 async function shell() {
     // cmdprompt = () => {printText(`[${ip}@mgyt.cf]:~ $ `, false)}
     // ip = await getIP() 
@@ -143,7 +144,8 @@ async function shell() {
     printText('Last site update: Tuesday, July 16 2024')
 
     cmdprompt()
-    window.scrollTo(0, document.body.scrollHeight)
+    let textelem = document.querySelector('body .text')
+    textelem.scrollTo(0, textelem.scrollHeight)
 
     
 }
