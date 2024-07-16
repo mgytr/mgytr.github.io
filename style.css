@@ -16,3 +16,10 @@ div.text .cursor {
     animation: 
         blink-caret .75s step-end infinite;
 }
+
+body input.hiddeninput {
+    opacity: 0;
+    position: fixed;
+    left:-300px;
+    top:-300px;
+}

@@ -1,9 +1,8 @@
-window.addEventListener('DOMContentLoaded', () => {
-    let eleminp = document.querySelector('body input.hiddeninput')
-    setInterval(() => {
-        eleminp.focus()
-    , 80);
-})
+
+let eleminp = document.querySelector('body input.hiddeninput')
+setInterval(() => {
+    eleminp.focus()
+}, 80);
 function changeactive() {
     var lines = document.querySelectorAll('div.text span')
     
