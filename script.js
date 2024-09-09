@@ -1,8 +1,33 @@
+if ('ontouchstart' in document.documentElement) {
+    let eleminp = document.querySelector('body input.hiddeninput')
+    setInterval(() => {
+        eleminp.focus()
+    }, 200);
+    
+    eleminp.addEventListener('keyup', function(event) {
+        key = event.key;
+        keyCode = event.keyCode;
 
-let eleminp = document.querySelector('body input.hiddeninput')
-setInterval(() => {
-    eleminp.focus()
-}, 80);
+        if (event.keyCode == 0 || event.keyCode == 229) {
+            key = event.target.value.slice(-1);
+            keyCode = key.charCodeAt(0);
+        }
+        if (event.key === 'Unidentified' && previnp.length > eleminp.value.length) {
+            key = 'Backspace';
+            keyCode = 8;
+        }
+        
+    
+        previnp = eleminp.value;
+    
+        keydown({'key': key, 'keyCode': keyCode})
+    });
+
+}
+else {
+    document.onkeydown = keydown
+}
+
 function changeactive() {
     var lines = document.querySelectorAll('div.text span')
     
@@ -76,26 +101,6 @@ async function keydown(event) {
 }
 var previnp = '';
 
-eleminp.addEventListener('keyup', function(event) {
-    key = event.key;
-    keyCode = event.keyCode;
-
-    if ('ontouchstart' in document.documentElement) {
-        //touch device fix
-        if (event.keyCode == 0 || event.keyCode == 229) {
-            key = event.target.value.slice(-1);
-            keyCode = key.charCodeAt(0);
-        }
-        if (event.key === 'Unidentified' && previnp.length > eleminp.value.length) {
-            key = 'Backspace';
-            keyCode = 8;
-        }
-        
-    }
-    previnp = eleminp.value;
-
-    keydown({'key': key, 'keyCode': keyCode})
-});
 
 
 var commands = {
@@ -106,7 +111,7 @@ var commands = {
         printText('<br><img src="/me.jpg" width=160, height=160 style="padding-left: 20px"></img><div style="padding-left: 220px; margin-top:-160px">OS: Windows 10 IoT LTSC 2021 build 19044.4529<br>Kernel: JavaScript<br>RAM: 8 GB<br>SSD: 128 GB<br>Host: Apple MacBook Air 2018 13-inch<br>Shell: ZSH<br>CPU: Intel i5-8210Y (4) @ 1.610GHz<br>GPU: Intel(R) UHD Graphics 617</div><br><br><a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
     },
     'projects': () => {
-        printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="/coolstore">CoolStore</a> - unofficial iOS app store (APPS NOT MADE BY ME!)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - jelbrek ios 1-21 ipados wachos tvos makos visonos fridgeos')
+        printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/MangaDownloader">MangaDownloader</a> - CLI for downloading Manga to your Kindle from libgen.li<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/SpotifyTUI">SpotifyTUI</a> - TUI for controlling spotify using the Spotify Web API (premium required)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/coolstore">CoolStore</a> - unofficial iOS app store (APPS NOT MADE BY ME!)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - jelbrek ios 1-21 ipados wachos tvos makos visonos fridgeos')
     },
     'clear': () => {
         document.querySelector('div.text').innerHTML = '<span>'
@@ -132,7 +137,8 @@ async function execcmd(cmd) {
     }
 
     cmdprompt()
-    setTimeout(() => {window.scrollTo(0, document.body.scrollHeight)}, 10)
+    let textdiv = document.querySelector('div.text')
+    setTimeout(() => {textdiv.scrollTo(0, textdiv.scrollHeight)}, 10)
 }
 var ip = ''
 
@@ -141,7 +147,8 @@ async function shell() {
     // ip = await getIP() 
     cmdprompt = () => {printText(`[you@mgyt.xyz]:~ $ `, false)}
     commands['neofetch']()
-    printText('Last site update: Tuesday, July 16 2024')
+    printText('Run help for commands', true)
+    printText('Last site update: Monday, September 9 2024')
 
     cmdprompt()
     let textelem = document.querySelector('body .text')
