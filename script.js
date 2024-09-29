@@ -4,20 +4,18 @@ if ('ontouchstart' in document.documentElement) {
         eleminp.focus()
     }, 200);
     
-    eleminp.addEventListener('keyup', function(event) {
-        key = event.key;
-        keyCode = event.keyCode;
+    eleminp.addEventListener('input', function(event) {
 
-        if (event.keyCode == 0 || event.keyCode == 229) {
+        if (previnp.length) {
             key = event.target.value.slice(-1);
             keyCode = key.charCodeAt(0);
         }
-        if (event.key === 'Unidentified' && previnp.length > eleminp.value.length) {
+        if (previnp.length > eleminp.value.length) {
             key = 'Backspace';
             keyCode = 8;
         }
         
-    
+        eleminp.value = 'jekdflk'
         previnp = eleminp.value;
     
         keydown({'key': key, 'keyCode': keyCode})
@@ -108,7 +106,7 @@ var commands = {
         printText('you')
     },
     'neofetch': () => {
-        printText('<br><img src="/me.png" width=160, height=160 style="padding-left: 20px"></img><div style="padding-left: 220px; margin-top:-160px">OS: Windows 10 IoT LTSC 2021 build 19044.4529<br>Kernel: JavaScript<br>RAM: 8 GB<br>SSD: 128 GB<br>Host: HP 250 15.6 inch G10<br>CPU: 13th Gen Intel(R) Core(TM) i5-1335U 1.30 GHz<br>GPU: Intel(R) UHD Graphics 770</div><br><br><a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
+        printText('<br><img src="/me.png" width=160, height=160 style="padding-left: 20px"></img><div style="padding-left: 220px; margin-top:-160px">OS: Windows 11 IoT LTSC 24H2 (OS Build 26100.1742)<br>Kernel: JavaScript<br>RAM: 8 GB<br>SSD: 256 GB<br>Host: HP 250 15.6 inch G10<br>CPU: 13th Gen Intel(R) Core(TM) i5-1335U 1.30 GHz<br>GPU: Intel(R) UHD Graphics 770</div><br><br><a style="background-color: #383838; color: #FFFFFFF" href="https://github.com/mgytr">GitHub</a> <a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
     },
     'projects': () => {
         printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/MangaDownloader">MangaDownloader</a> - CLI for downloading Manga to your Kindle from libgen.li<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/SpotifyTUI">SpotifyTUI</a> - TUI for controlling spotify using the Spotify Web API (premium required)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/coolstore">CoolStore</a> - unofficial iOS app store (APPS NOT MADE BY ME!)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - jelbrek ios 1-21 ipados wachos tvos makos visonos fridgeos')
