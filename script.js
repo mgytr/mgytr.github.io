@@ -6,7 +6,7 @@ if ('ontouchstart' in document.documentElement) {
     
     eleminp.addEventListener('input', function(event) {
 
-        if (previnp.length) {
+        if (previnp.length < eleminp.value.length) {
             key = event.target.value.slice(-1);
             keyCode = key.charCodeAt(0);
         }
@@ -14,8 +14,11 @@ if ('ontouchstart' in document.documentElement) {
             key = 'Backspace';
             keyCode = 8;
         }
-        
-        eleminp.value = 'jekdflk'
+        if (previnp.length == eleminp.value.length) {
+            key = 'Enter'
+            keyCode = 13
+        }
+
         previnp = eleminp.value;
     
         keydown({'key': key, 'keyCode': keyCode})
