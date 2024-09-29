@@ -149,7 +149,7 @@ async function shell() {
     cmdprompt = () => {printText(`[you@mgyt.xyz]:~ $ `, false)}
     commands['neofetch']()
     printText('Run help for commands', true)
-    printText('Last site update: Monday, September 9 2024')
+    printText('Last site update: September 29, 2024')
 
     cmdprompt()
     let textelem = document.querySelector('body .text')
