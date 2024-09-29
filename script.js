@@ -1,41 +1,43 @@
+const eleminp = document.querySelector('body input.hiddeninput');
+eleminp.value = '';
 if ('ontouchstart' in document.documentElement) {
-    let eleminp = document.querySelector('body input.hiddeninput');
-    let previnp = ''; // Initialize the previous input value
-    let timeoutId;
 
-    setInterval(() => {
-        eleminp.focus();
-    }, 200);
+    let previnp = ''; // Store previous input value
 
-    eleminp.addEventListener('input', function(event) {
-        clearTimeout(timeoutId); // Clear previous timeout
 
-        timeoutId = setTimeout(() => {
-            // Only handle key events if the input value has changed
-            const currentInput = eleminp.value;
+    eleminp.focus();
+    setInterval(()=>{eleminp.focus()}, 400)
+    eleminp.addEventListener('keyup', function(event) {
+        const currentInput = eleminp.value;
 
-            if (currentInput.length > previnp.length) {
-                // New character typed
-                const key = currentInput.slice(-1); // Get the last character
-                const keyCode = key.charCodeAt(0);
-                keydown({'key': key, 'keyCode': keyCode});
-            } else if (currentInput.length < previnp.length) {
-                // Backspace detected
-                keydown({'key': 'Backspace', 'keyCode': 8});
-            }
+        // Handle character addition
+        if (currentInput.length > previnp.length) {
+            const key = currentInput.slice(-1); // Get the last character typed
+            const keyCode = key.charCodeAt(0); // Get the character code
+            keydown({'key': key, 'keyCode': keyCode});
+        }
 
-            // If input is empty and Enter is pressed
-            if (currentInput.length === 0 && previnp.length > 0) {
+        // Handle backspace action
+        if (currentInput.length < previnp.length) {
+            keydown({'key': 'Backspace', 'keyCode': 8});
+        }
+
+        // Handle Enter key action
+        if (event.key === 'Enter') {
+            if (currentInput.length > 0) {
                 keydown({'key': 'Enter', 'keyCode': 13});
+            } else {
+                event.preventDefault(); // Prevent action if input is empty
             }
+        }
 
-            previnp = currentInput; // Update the previous input value
-        }, 100); // Delay to avoid rapid triggering
+        // Update previous input value
+        previnp = currentInput; // Update the previous input value
     });
 }
 
 else {
-    document.onkeydown = keydown
+    document.onkeydown = (event)=>{event.preventDefault(); keydown(event)}
 }
 
 function changeactive() {
@@ -45,22 +47,26 @@ function changeactive() {
     let i = 0;
     while (i < lines.length) {
         lines[i].className = ''
-        console.log(i)
         i++;
     }
 
     lines[lines.length-1].className = 'cursor'
-    console.log(lines)
-
     
 }
-function printText(text=null, newline=true, textcolor='rgb(204, 198, 198)') {
+function printText(text=null, ishtml=true, newline=true) {
     var textdiv = document.querySelector('div.text')
     if (text !== null) {
 
         const p_line = document.createElement('span')
-        p_line.style.color = textcolor
-        p_line.innerHTML = text
+        p_line.style.color = 'rgb(204, 198, 198)'
+        
+        if (!ishtml) {
+            let setwith = serializeForInnerHTML(text).replaceAll(' ', '&nbsp;');
+            p_line.innerHTML = setwith
+        }
+        else {
+            p_line.innerHTML= text
+        }
 
         textdiv.appendChild(p_line)
     }
@@ -68,6 +74,7 @@ function printText(text=null, newline=true, textcolor='rgb(204, 198, 198)') {
         textdiv.appendChild(document.createElement('br'))
     }
     changeactive()
+    setTimeout(() => {textdiv.scrollTo(0, textdiv.scrollHeight)}, 10)
 
 }
 
@@ -83,12 +90,31 @@ changeactive()
 
 let keyboardcurrent = ''
 let enterpressed = false
-
+function shuffle(array) {
+    let currentIndex = array.length;
+  
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element...
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  }
 async function keydown(event) {
     const lines = document.querySelectorAll('div.text span')
     const key = event.key
     if (key.length === 1) {
-        lines[lines.length-1].innerHTML += key
+        if (key !== ' ') {
+        lines[lines.length-1].textContent+= key}
+        else {
+            lines[lines.length-1].innerHTML+= '&nbsp;'
+        }
+        
         keyboardcurrent += key
     }
     else {
@@ -96,7 +122,6 @@ async function keydown(event) {
             
             const linelast = lines[lines.length-1].innerHTML[lines[lines.length-1].innerHTML.length-1],
                 kblast = keyboardcurrent[keyboardcurrent.length-1]
-            console.log(`${lines[lines.length-1].innerHTML} ${linelast} ${kblast}`)
             if (linelast === kblast) {
                 lines[lines.length-1].innerHTML = lines[lines.length-1].innerHTML.slice(0, -1)
                 
@@ -110,27 +135,68 @@ async function keydown(event) {
 
 }
 var previnp = '';
-
-
-
+const sleep = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+function serializeForInnerHTML(text) {
+    return text
+        .replace(/&/g, '&amp;')    // Replace & with &amp;
+        .replace(/</g, '&lt;')     // Replace < with &lt;
+        .replace(/>/g, '&gt;')     // Replace > with &gt;
+        .replace(/"/g, '&quot;')   // Replace " with &quot;
+        .replace(/'/g, '&#39;');   // Replace ' with &#39;
+}
 var commands = {
     'whoami': () => {
-        printText('you')
+        printText('  how   are youcou', false)
     },
     'neofetch': () => {
-        printText('<br><img src="/me.png" width=160, height=160 style="padding-left: 20px"></img><div style="padding-left: 220px; margin-top:-160px">OS: Windows 11 IoT LTSC 24H2 (OS Build 26100.1742)<br>Kernel: JavaScript<br>RAM: 8 GB<br>SSD: 256 GB<br>Host: HP 250 15.6 inch G10<br>CPU: 13th Gen Intel(R) Core(TM) i5-1335U 1.30 GHz<br>GPU: Intel(R) UHD Graphics 770</div><br><br><a style="background-color: #383838; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
+        printText('<br><img src="/me.png" width=160, height=160 style="padding-left: 20px; margin-bottom: 20px;"></img><div style="padding-left: 190px; margin-top:-160px">OS: Windows 11 IoT LTSC 24H2 (OS Build 26100.1742)<br>RAM: 8 GB<br>SSD: 256 GB<br>Host: HP 250 G10<br>CPU: 13th Gen Intel Core i5-1335U 1.30GHz<br>GPU: Intel UHD Graphics 770</div><br><br><a style="background-color: #383838; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
     },
     'projects': () => {
-        printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/MangaDownloader">MangaDownloader</a> - CLI for downloading Manga to your Kindle from libgen.li<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/SpotifyTUI">SpotifyTUI</a> - TUI for controlling spotify using the Spotify Web API (premium required)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/coolstore">CoolStore</a> - unofficial iOS app store (APPS NOT MADE BY ME!)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - jelbrek ios 1-21 ipados wachos tvos makos visonos fridgeos')
+        printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/MangaDownloader">MangaDownloader</a> - CLI for downloading Manga to your Kindle from libgen.li<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/SpotifyTUI">SpotifyTUI</a> - TUI for controlling spotify using the Spotify Web API (premium required)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - jelbrek ios 1-21 ipados wachos tvos makos visonos fridgeos')
     },
     'clear': () => {
         document.querySelector('div.text').innerHTML = '<span>'
     },
     'help': () => {
-        printText('Avalible commands:<br>whoami<br>neofetch<br>discord<br>clear<br>projects<br>help<br>')
+        printText('Avalible commands:<br>whoami<br>neofetch<br>discord<br>clear<br>projects<br>help'+(localStorage.getItem('rickrolled') === null ? '<br>clean_system' : ''), true)
     },
     'discord': () => {
-        printText('Discord: @MoneyGrabYT', true, 'rgb(76, 116, 217)')
+        printText('<span style="color: rgb(76, 116, 217)">Discord: @MoneyGrabYT</span>', true)
+    }
+}
+if (localStorage.getItem('rickrolled') === null) {
+    commands['clean_system'] = async () => {
+        const rickroll = ()=>{window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank')}
+        printText('Disinfecting system...', true)
+        await sleep(2000)
+        let virus_list = ['PUA.Linux.Miner-67823', 'Trojan.Script.Inject-33788', 'Worm.Linux.AutoRun-56102', 'Backdoor.Linux.Agent-70456', 'Worm.Linux.Mirai-5870924-0']
+        shuffle(virus_list)
+        let did = false;
+        for (let i = 0; i < virus_list.length; i++) {
+            // unlikely random that is rarely 1 and mostly 0
+            let virus = virus_list[i]
+            printText(`Removing ${virus}...`, true)
+            await sleep(Math.floor(Math.random() * 1000)*1.5)
+            if (Math.random() > 0.8 && !did) {
+                did = true;
+                rickroll()
+            }
+            if (did) {
+                break;
+            };
+                
+
+        }
+        if (!did) {
+            rickroll()
+            did = true;
+        }
+        localStorage.setItem('rickrolled', 'true')
+        printText('Allow popup for final deinfection')
+        
+        
     }
 }
 
@@ -139,26 +205,33 @@ async function execcmd(cmd) {
     printText()
 
     if (Object.keys(commands).includes(cmd)) {
-        commands[cmd]()
-    }
-    else if (cmd.trim() !== '') {
+        // check if func is async
+        if (typeof commands[cmd] === 'function' && commands[cmd].constructor.name === 'AsyncFunction') {
+            await commands[cmd]()
+        }
 
-        printText(`${cmd}: command not found`)
+        else {
+            commands[cmd]()
+        }
+    }
+    else if (cmd.replaceAll(' ', '') !== '') {
+
+        printText(`${cmd}: command not found`, false)
     }
 
     cmdprompt()
     let textdiv = document.querySelector('div.text')
-    setTimeout(() => {textdiv.scrollTo(0, textdiv.scrollHeight)}, 10)
 }
 var ip = ''
 
 async function shell() {
     // cmdprompt = () => {printText(`[${ip}@mgyt.cf]:~ $ `, false)}
     // ip = await getIP() 
-    cmdprompt = () => {printText(`[you@mgyt.xyz]:~ $ `, false)}
+    cmdprompt = () => {printText(`[you@mgyt.xyz]:~ $ `, true, false)}
     commands['neofetch']()
     printText('Run help for commands', true)
     printText('Last site update: September 29, 2024')
+    if (localStorage.getItem('rickrolled') === null) printText('5 viruses have been detected! Please clean your system using "clean_system"', true)
 
     cmdprompt()
     let textelem = document.querySelector('body .text')

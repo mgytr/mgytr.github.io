@@ -14,6 +14,8 @@ div.text {
     width: 100%;
     overflow-y: scroll;
     height: 95%;
+    text-wrap:wrap;
+    width: 98%;
 }
 
 div.text .cursor {
