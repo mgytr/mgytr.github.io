@@ -148,7 +148,7 @@ function serializeForInnerHTML(text) {
 }
 var commands = {
     'whoami': () => {
-        printText('  how   are youcou', false)
+        printText('you', false)
     },
     'neofetch': () => {
         printText('<br><img src="/me.png" width=160, height=160 style="padding-left: 20px; margin-bottom: 20px;"></img><div style="padding-left: 190px; margin-top:-160px">OS: Windows 11 IoT LTSC 24H2 (OS Build 26100.1742)<br>RAM: 8 GB<br>SSD: 256 GB<br>Host: HP 250 G10<br>CPU: 13th Gen Intel Core i5-1335U 1.30GHz<br>GPU: Intel UHD Graphics 770</div><br><br><a style="background-color: #383838; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
