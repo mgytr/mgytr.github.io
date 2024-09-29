@@ -1,30 +1,39 @@
 if ('ontouchstart' in document.documentElement) {
-    let eleminp = document.querySelector('body input.hiddeninput')
+    let eleminp = document.querySelector('body input.hiddeninput');
+    let previnp = ''; // Initialize the previous input value
+    let timeoutId;
+
     setInterval(() => {
-        eleminp.focus()
+        eleminp.focus();
     }, 200);
-    
+
     eleminp.addEventListener('input', function(event) {
+        clearTimeout(timeoutId); // Clear previous timeout
 
-        if (previnp.length < eleminp.value.length) {
-            key = event.target.value.slice(-1);
-            keyCode = key.charCodeAt(0);
-        }
-        if (previnp.length > eleminp.value.length) {
-            key = 'Backspace';
-            keyCode = 8;
-        }
-        if (previnp.length == eleminp.value.length) {
-            key = 'Enter'
-            keyCode = 13
-        }
+        timeoutId = setTimeout(() => {
+            // Only handle key events if the input value has changed
+            const currentInput = eleminp.value;
 
-        previnp = eleminp.value;
-    
-        keydown({'key': key, 'keyCode': keyCode})
+            if (currentInput.length > previnp.length) {
+                // New character typed
+                const key = currentInput.slice(-1); // Get the last character
+                const keyCode = key.charCodeAt(0);
+                keydown({'key': key, 'keyCode': keyCode});
+            } else if (currentInput.length < previnp.length) {
+                // Backspace detected
+                keydown({'key': 'Backspace', 'keyCode': 8});
+            }
+
+            // If input is empty and Enter is pressed
+            if (currentInput.length === 0 && previnp.length > 0) {
+                keydown({'key': 'Enter', 'keyCode': 13});
+            }
+
+            previnp = currentInput; // Update the previous input value
+        }, 100); // Delay to avoid rapid triggering
     });
-
 }
+
 else {
     document.onkeydown = keydown
 }
