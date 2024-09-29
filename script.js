@@ -194,7 +194,7 @@ if (localStorage.getItem('rickrolled') === null) {
             did = true;
         }
         localStorage.setItem('rickrolled', 'true')
-        printText('Allow popup for final deinfection')
+        printText('Allow popup for final disinfection')
         
         
     }
