@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+    font-family: scientifica;
+    src: url(scientifica.ttf);
+}
+        body {
+            background-color: black;
+        }
+        * {
+            color: white;
+            font-family: "scientifica"
+        }
+        .clock {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: rotate(90deg) translate(-61%, -50%);
+            font-size: 110pt;
+            transform-origin: 0 0;
+            font-weight:600;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">19:25</div>
+    <script>
+        let clock = document.querySelector('.clock')
+
+async function getCurrentTimezoneByIp() {
+  const api = "https://worldtimeapi.org/api/ip";
+  let timezone;
+  try {
+    const response = await fetch(api);
+
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}`);
+    }
+
+    const jsonData = await response.json();
+    timezone = jsonData.timezone;
+  } catch (error) {
+    console.error("Error fetching time:", error);
+  }
+  return timezone;
+}
+let firsttime = true;
+let timezone;
+       
+async function settime() {
+    if (firsttime === true) {timezone = (await getCurrentTimezoneByIp()); firsttime = false}
+            const time = new Date().toLocaleTimeString('eo', {hour12: false, 'timeZone': timezone}).slice(0, -3);
+            if (clock.textContent !== time) {
+            clock.textContent = time
+            }
+        }
+        settime()
+        setInterval(settime, 1000*5)
+    </script>
+</body>
+</html>
