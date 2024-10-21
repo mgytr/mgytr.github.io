@@ -81,7 +81,10 @@
                 const jsonData = await response.json();
                 timezone = jsonData.timezone;
             } catch (error) {
-                console.error("Error fetching time:", error);
+                let elem = document.createElement('div')
+                elem.innerText = `API request failed ${error}`
+                document.body.appendChild(elem)
+                throw new Error(`API request failed ${error}`);
             }
             return timezone;
         }
