@@ -72,6 +72,9 @@
                 const response = await fetch(api);
 
                 if (!response.ok) {
+                    let elem = document.createElement('div')
+                    elem.innerText = `API request failed ${response.status} ${await response.text()}`
+                    document.body.appendChild(elem)
                     throw new Error(`API request failed with status ${response.status}`);
                 }
 
