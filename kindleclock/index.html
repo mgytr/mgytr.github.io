@@ -63,7 +63,7 @@
         };
 
         // Timezone logic
-
+        let timezone;
 
         async function getCurrentTimezoneByIp() {
             const api = "https://worldtimeapi.org/api/ip";
@@ -83,7 +83,7 @@
             return timezone;
         }
         (async()=>{
-        let timezone = (await getCurrentTimezoneByIp());
+        timezone = (await getCurrentTimezoneByIp());
         async function settime() {
             const time = new Date().toLocaleTimeString('eo', {
                 hour12: false,
