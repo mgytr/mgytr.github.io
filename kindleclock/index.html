@@ -31,7 +31,8 @@
     <div class="clock">setting time...</div>
     <script>
         let clock = document.querySelector('.clock')
-
+        document.body.onclick = () => {deg += 90; clock.style.transform = `rotate(${deg}deg) translate(-61%, -50%)`}
+        let deg = 90
 async function getCurrentTimezoneByIp() {
   const api = "https://worldtimeapi.org/api/ip";
   let timezone;
