@@ -83,7 +83,7 @@
             }
             return timezone;
         }
-
+        (async()=>{
         async function settime() {
             if (firsttime === true) {
                 timezone = (await getCurrentTimezoneByIp());
@@ -98,8 +98,9 @@
             }
         }
 
-        settime();
+        await settime();
         setInterval(settime, 1000 * 15);
+    })()
     </script>
 </body>
 </html>
