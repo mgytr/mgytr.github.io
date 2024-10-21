@@ -72,19 +72,21 @@
                 const response = await fetch(api);
 
                 if (!response.ok) {
-                    let elem = document.createElement('div')
-                    elem.innerText = `API request failed ${response.status} ${await response.text()}`
-                    document.body.appendChild(elem)
-                    throw new Error(`API request failed with status ${response.status}`);
+                    //let elem = document.createElement('div')
+                    //elem.innerText = `API request failed ${response.status} ${await response.text()}`
+                    //document.body.appendChild(elem)
+                    console.error(`API request failed with status ${response.status}`);
+                    return await getCurrentTimezoneByIp()
                 }
 
                 const jsonData = await response.json();
                 timezone = jsonData.timezone;
             } catch (error) {
-                let elem = document.createElement('div')
-                elem.innerText = `API request failed ${error}`
-                document.body.appendChild(elem)
-                throw new Error(`API request failed ${error}`);
+                //let elem = document.createElement('div')
+                //elem.innerText = `API request failed ${error}`
+                //document.body.appendChild(elem)
+                console.error(`API request failed ${error}`);
+                return await getCurrentTimezoneByIp()
             }
             return timezone;
         }
