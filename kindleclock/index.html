@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rotating Clock</title>
     <style>
         @font-face {
-    font-family: scientifica;
-    src: url(scientifica.ttf);
-}
+            font-family: scientifica;
+            src: url(scientifica.ttf);
+        }
         body {
             background-color: black;
         }
         * {
             color: white;
-            font-family: "scientifica"
+            font-family: "scientifica";
         }
         .clock {
             position: fixed;
@@ -22,46 +22,84 @@
             top: 50%;
             transform: rotate(90deg) translate(-61%, -50%);
             font-size: 110pt;
+            font-weight: 600;
             transform-origin: 0 0;
-            font-weight:600;
         }
     </style>
 </head>
 <body>
     <div class="clock">setting time...</div>
     <script>
-        let clock = document.querySelector('.clock')
-        document.body.onclick = () => {deg += 90; clock.style.transform = `rotate(${deg}deg) translate(-61%, -50%)`}
-        let deg = 90
-async function getCurrentTimezoneByIp() {
-  const api = "https://worldtimeapi.org/api/ip";
-  let timezone;
-  try {
-    const response = await fetch(api);
+        let clock = document.querySelector('.clock');
+        let deg = 90;
 
-    if (!response.ok) {
-      throw new Error(`API request failed with status ${response.status}`);
-    }
-
-    const jsonData = await response.json();
-    timezone = jsonData.timezone;
-  } catch (error) {
-    console.error("Error fetching time:", error);
-  }
-  return timezone;
-}
-let firsttime = true;
-let timezone;
-       
-async function settime() {
-    if (firsttime === true) {timezone = (await getCurrentTimezoneByIp()); firsttime = false}
-            const time = new Date().toLocaleTimeString('eo', {hour12: false, 'timeZone': timezone}).slice(0, -3);
-            if (clock.textContent !== time) {
-            clock.textContent = time
+        // Function to set proper translation based on rotation angle
+        function updateTransform() {
+            switch (deg) {
+                case 0:
+                    clock.style.transform = `rotate(${deg}deg) translate(-50%, -70%)`;
+                    break;
+                case 90:
+                    clock.style.transform = `rotate(${deg}deg) translate(-61%, -50%)`; // Default for 90deg
+                    break;
+                case 180:
+                    clock.style.transform = `rotate(${deg}deg) translate(-50%, -30%)`;
+                    break;
+                case 270:
+                    clock.style.transform = `rotate(${deg}deg) translate(-41%, -50%)`;
+                    break;
             }
         }
-        settime()
-        setInterval(settime, 1000*15)
+
+        // Rotate on click and update transform
+        document.body.onclick = () => {
+            if (deg >= 270) {
+                deg = 0;
+            }
+            else {
+            deg += 90;
+            }
+            updateTransform();
+        };
+
+        // Timezone logic
+        let firsttime = true;
+        let timezone;
+
+        async function getCurrentTimezoneByIp() {
+            const api = "https://worldtimeapi.org/api/ip";
+            let timezone;
+            try {
+                const response = await fetch(api);
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const jsonData = await response.json();
+                timezone = jsonData.timezone;
+            } catch (error) {
+                console.error("Error fetching time:", error);
+            }
+            return timezone;
+        }
+
+        async function settime() {
+            if (firsttime === true) {
+                timezone = (await getCurrentTimezoneByIp());
+                firsttime = false;
+            }
+            const time = new Date().toLocaleTimeString('eo', {
+                hour12: false,
+                timeZone: timezone
+            }).slice(0, -3);
+            if (clock.textContent !== time) {
+                clock.textContent = time;
+            }
+        }
+
+        settime();
+        setInterval(settime, 1000 * 15);
     </script>
 </body>
 </html>
