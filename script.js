@@ -150,8 +150,8 @@ var commands = {
     'whoami': () => {
         printText('you', false)
     },
-    'neofetch': () => {
-        printText('<br><img src="/me.png" width=160, height=160 style="padding-left: 20px; margin-bottom: 20px;"></img><div style="padding-left: 190px; margin-top:-160px">OS: Windows 11 IoT LTSC 24H2 (OS Build 26100.1742)<br>RAM: 8 GB<br>SSD: 256 GB<br>Host: HP 250 G10<br>CPU: 13th Gen Intel Core i5-1335U 1.30GHz<br>GPU: Intel UHD Graphics 770</div><br><br><a style="background-color: #383838; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
+    'fastfetch': () => {
+        printText('<br><img src="/me.png" width=160, height=160 style="padding-left: 20px; margin-bottom: 20px;"></img><div style="padding-left: 190px; margin-top:-160px">OS: Arch Linux x64<br>RAM: 8 GB<br>SSD: 256 GB<br>Host: HP 250 G10<br>CPU: 13th Gen Intel Core i5-1335U 1.30GHz<br>GPU: Intel UHD Graphics 770</div><br><br><a style="background-color: #383838; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: rgb(255, 100, 100); color: #000000" href="https://youtube.com/@MoneyGrab">YouTube</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a><br>')
     },
     'projects': () => {
         printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/MangaDownloader">MangaDownloader</a> - CLI for downloading Manga to your Kindle from libgen.li<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/SpotifyTUI">SpotifyTUI</a> - TUI for controlling spotify using the Spotify Web API (premium required)<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="/monc0ver">monc0ver</a> - jelbrek ios 1-21 ipados wachos tvos makos visonos fridgeos')
@@ -160,7 +160,7 @@ var commands = {
         document.querySelector('div.text').innerHTML = '<span>'
     },
     'help': () => {
-        printText('Avalible commands:<br>whoami<br>neofetch<br>discord<br>clear<br>projects<br>help'+(localStorage.getItem('rickrolled') === null ? '<br>clean_system' : ''), true)
+        printText('Avalible commands:<br>whoami<br>fastfetch<br>discord<br>clear<br>projects<br>help'+(localStorage.getItem('rickrolled') === null ? '<br>clean_system' : ''), true)
     },
     'discord': () => {
         printText('<span style="color: rgb(76, 116, 217)">Discord: @MoneyGrabYT</span>', true)
@@ -228,7 +228,7 @@ async function shell() {
     // cmdprompt = () => {printText(`[${ip}@mgyt.cf]:~ $ `, false)}
     // ip = await getIP() 
     cmdprompt = () => {printText(`[you@mgyt.xyz]:~ $ `, true, false)}
-    commands['neofetch']()
+    commands['fastfetch']()
     printText('Run help for commands', true)
     printText('Last site update: September 29, 2024')
     if (localStorage.getItem('rickrolled') === null) printText('5 viruses have been detected! Please clean your system using "clean_system"', true)
