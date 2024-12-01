@@ -1,12 +1,16 @@
+@font-face {
+    font-family: scientifica;
+    src: url('kindleclock/scientifica.ttf');
+}
 body {
-    background-color: rgb(20, 20, 20);
+    background-color: rgb(11, 11, 11);
     color: rgb(204, 198, 198);
     font-family: Terminal;
 }
 
 @keyframes blink-caret {
     from, to { border-color: transparent }
-    50% { border-color: rgb(255, 148, 148); }
+    50% { border-color: rgb(212, 212, 212); }
 }
 div.text {
     position: fixed;
@@ -21,7 +25,7 @@ div.text {
 div.text .cursor {
     padding-right: 5px;
     width: fit-content;
-    border-right: .40em solid rgb(255, 148, 148); /* The typwriter cursor */
+    border-right: .40em solid rgb(212,212,212); /* The typewriter cursor */
     animation: 
         blink-caret .75s step-end infinite;
 }
