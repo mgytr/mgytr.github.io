@@ -151,22 +151,16 @@ var commands = {
         printText('you', false)
     },
     'fastfetch': () => {
-        printText(`
-        <br>
-      /\\        OS: Arch Linux x64<br>
-     /  \\       RAM: 8 GB<br>
-    /    \\      SSD: 256 GB<br>
-   /      \\     Host: HP 250 G10<br>
-  /   ,,   \\    CPU: 13th Gen Intel Core i5-1335U 4.60GHz<br>
- /   |  |   \\   GPU: Intel UHD Graphics 770<br>
+printText(`
+      /\\        OS: Arch Linux x64
+     /  \\       RAM: 8 GB
+    /    \\      SSD: 256 GB
+   /      \\     Host: HP 250 G10
+  /   ,,   \\    CPU: 13th Gen Intel Core i5-1335U 4.60GHz
+ /   |  |   \\   GPU: Intel UHD Graphics 770
 /_-''    ''-_\\ 
-        OS: Arch Linux x64
-        <br>RAM: 8 GB
-        <br>SSD: 256 GB
-        <br>Host: HP 250 G10
-        <br>CPU: 13th Gen Intel Core i5-1335U 1.30GHz
-        <br>GPU: Intel UHD Graphics 770</div>
-        <br><br><a style="background-color: #383838; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a> <a style="background-color: #E3C857; color: #373737" href="https://blog.mgyt.xyz/">Blog</a><br>`)
+`, false)
+printText('<br><br><a style="background-color: #383838; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: rgb(76, 116, 217); color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a> <a style="background-color: #E3C857; color: #373737" href="https://blog.mgyt.xyz/">Blog</a><br>', true)
     },
     'projects': () => {
         printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/MangaDownloader">MangaDownloader</a> - CLI for downloading Manga to your Kindle from libgen.li<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/SpotifyTUI">SpotifyTUI</a> - TUI for controlling spotify using the Spotify Web API (premium required)')
