@@ -62,6 +62,7 @@ function printText(text=null, ishtml=true, newline=true) {
         
         if (!ishtml) {
             let setwith = serializeForInnerHTML(text).replaceAll(' ', '&nbsp;');
+            p_line.style.whiteSpace = 'pre'
             p_line.innerHTML = setwith
         }
         else {
