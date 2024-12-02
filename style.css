@@ -20,6 +20,7 @@ div.text {
     height: 95%;
     text-wrap:wrap;
     width: 98%;
+    font-size: 13.3pt;
 }
 
 div.text .cursor {
