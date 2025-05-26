@@ -151,18 +151,78 @@ var commands = {
     'whoami': () => {
         printText('you', false)
     },
-    'fastfetch': () => {
-printText(`
-        /\\        OS: Arch Linux x64
-       /  \\       RAM: 8 GB
-      /    \\      SSD: 256 GB
-     /      \\     Host: HP 250 G10
-    /   ,,   \\    CPU: 13th Gen Intel Core i5-1335U 4.60GHz
-   /   |  |   \\   GPU: Intel UHD Graphics 770
-  /_-''    ''-_\\
-`, false)
-printText('<a style="background-color: #383838; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: #383838; color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a> <a style="background-color: #383838; color: #ffffff" href="https://blog.mgyt.xyz/">Blog</a><br>', true)
-    },
+'fastfetch': () => {
+    if (!statsData) {
+        printText("Stats not loaded yet...", false);
+        return;
+    }
+    printText("", true);
+
+    const { ramused, ramtotal, rampercentage, vramused, vramtotal, vrampercentage, disks, pacman, flatpak, uptime } = statsData;
+
+    const color = '#F2AEFD';
+
+    // Wrap dash + next char with colored span
+    function colorDashPair(line) {
+        return line.replace(/(─ .)/, match => `<span style="color:${color}">${match}</span>`);
+    }
+
+    // Wrap percentages (e.g. 55%) with colored span
+    function colorPercentages(line) {
+        return line.replace(/(\d+%)/g, `<span style="color:${color}">$1</span>`);
+    }
+
+    // Compose info lines with colors applied
+    const infoLines = [
+        "┌── hardware",
+        colorDashPair(colorPercentages(`─  ◎ AMD Ryzen 7 5700X3D (16) @ 4.15 GHz`)),
+        colorDashPair(colorPercentages(`─  ◎ NVIDIA GeForce RTX 4070 (5888) @ 3.10 GHz (${vramused.toFixed(2)} GiB / ${vramtotal.toFixed(2)} GiB, ${vrampercentage}%) [Discrete]`)),
+        colorDashPair(colorPercentages(`─  ◎ ${ramused.toFixed(2)} GiB / ${ramtotal.toFixed(2)} GiB (${rampercentage}%)`)),
+        ...disks.map(d => {
+            const ext = d.external ? " [External]" : "";
+            return colorDashPair(colorPercentages(`─    ◎ ${d.used.toFixed(2)} GiB / ${d.total.toFixed(2)} GiB (${d.percentage}%) - ${d.fstype}${ext}`));
+        }),
+        "┌── system",
+        colorDashPair(`─ 󰏓  ◎ ${pacman} (pacman), ${flatpak} (flatpak)`),
+        colorDashPair(`─   ◎ ${uptime}`)
+    ];
+
+    const logoLines = [
+        "       /\\",
+        "      /  \\",
+        "     /    \\",
+        "    /      \\",
+        "   /   ,,   \\",
+        "  /   |  |   \\",
+        " /_-''    ''-_\\"
+    ];
+
+    const textColumn = 18; // column where text starts
+
+    let finalOutput = "";
+    const totalLines = Math.max(logoLines.length, infoLines.length);
+
+    for (let i = 0; i < totalLines; i++) {
+        const logoPart = logoLines[i] || "";
+        const infoPart = infoLines[i] || "";
+
+        const paddingCount = Math.max(1, textColumn - logoPart.length);
+        const padding = "&nbsp;".repeat(paddingCount);
+
+        // Only replace spaces in logoPart, keep infoPart untouched (to preserve HTML spans)
+        const htmlLogo = logoPart.replace(/ /g, "&nbsp;");
+        const coloredLogo = `<span style="color:${color}">${htmlLogo}</span>`;
+        const line = `${coloredLogo}${padding}${infoPart}`;
+
+        printText(line, true, true);
+    }
+
+
+    // Footer with links, also HTML
+    printText('<a style="background-color: #F2ADFD; color: #ffffff !important" href="https://github.com/mgytr">GitHub</a> <a style="background-color: #F2ADFD; color: #FFFFFF" onclick="execcmd(\'discord\')" href="#">Discord</a> <a style="background-color: #F2ADFD; color: #ffffff" href="https://blog.mgyt.xyz/">Blog</a><br>', true);
+},
+
+
     'projects': () => {
         printText('<a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/MangaDownloader">MangaDownloader</a> - CLI for downloading Manga to your Kindle from libgen.li<br><a style="background-color: rgb(56, 56, 220); color: #000000" href="https://github.com/mgytr/SpotifyTUI">SpotifyTUI</a> - TUI for controlling spotify using the Spotify Web API (premium required)')
     },
@@ -232,23 +292,60 @@ async function execcmd(cmd) {
     cmdprompt()
     let textdiv = document.querySelector('div.text')
 }
-var ip = ''
+// var ip = ''
+
+let statsData = null;
+
+async function fetchStats() {
+    try {
+        const response = await fetch("https://pcstats.mgyt.xyz/get");
+        statsData = await response.json();
+    } catch (error) {
+        console.error("Failed to fetch system stats:", error);
+    }
+}
+
 
 async function shell() {
     // cmdprompt = () => {printText(`[${ip}@mgyt.cf]:~ $ `, false)}
     // ip = await getIP() 
-    cmdprompt = () => {printText(`[you@mgyt.xyz]:~ $ `, true, false)}
-    commands['fastfetch']()
-    printText('Run help for commands', true)
-    printText('Last site update: September 29, 2024')
-    if (localStorage.getItem('rickrolled') === null) printText('5 viruses have been detected! Please clean your system using "clean_system"', true)
+    await fetchStats();
+    setInterval(fetchStats, 35000); // update every 35 sec
+cmdprompt = () => {
+  const user = 'you';            
+  const cwd = '~ ';              
+
+  const part1Bg = '#FFAEFE';
+  const part1Text = '#2E2E2E';
+  const part2Bg = '#FF86FF';
+  const part2Text = '#FFFFFE';
+
+  const leftTriangle = ''; 
+  const rightTriangle = '';
+
+  const promptHtml =
+    `<span style="color:${part1Bg}; padding:0 0px;">${leftTriangle}</span>` +
+    `<span style="background-color:${part1Bg}; color:${part1Text}; padding:0 8px;">${user}</span>` +
+    `<span style="background-color:${part2Bg}; color:${part1Bg};">${rightTriangle}</span>` +
+    `<span style="background-color:${part2Bg}; color:${part2Text}; padding:0 5px;">${cwd}</span>` +
+    `<span style="color:${part2Bg}; padding: 0;">${rightTriangle}</span>`;
+
+  printText(promptHtml, true, false);
+  printText('', false, false)
+};
+
+
+    commands['fastfetch']();
+    printText('Run help for commands', true);
+    printText('Last site update: May 26, 2025')
+    if (localStorage.getItem('rickrolled') === null) printText('6 viruses have been detected! Please clean your system using "clean_system"', true)
 
     cmdprompt()
     let textelem = document.querySelector('body .text')
     textelem.scrollTo(0, textelem.scrollHeight)
-
+    
     
 }
 
-shell()
 
+shell();

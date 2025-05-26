@@ -2,33 +2,55 @@
     font-family: scientifica;
     src: url('kindleclock/scientifica.ttf');
 }
+@font-face {
+    font-family: SymbolsNerdFont;
+    src: url('nerdfont.ttf');
+}
+* {
+    padding: 0;
+}
 body {
     background-color: rgb(11, 11, 11);
     color: rgb(204, 198, 198);
-    font-family: scientifica;
+    font-family: scientifica, SymbolsNerdFont;
+    padding-right: 0;
 }
 
-@keyframes blink-caret {
+/*@keyframes blink-caret {
     from, to { border-color: transparent }
     50% { border-color: rgb(212, 212, 212); }
-}
+}*/
 div.text {
     position: fixed;
     top: 0;
-    width: 100%;
-    overflow-y: scroll;
+    width: 100vw;
     height: 95%;
-    text-wrap:wrap;
+    text-wrap: nowrap;
     width: 98%;
     font-size: 13.3pt;
+    margin-left: 8px !important;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    padding-right: 0;
+    margin-right: 0;
+
+    overflow:scroll;
 }
 
 div.text .cursor {
-    padding-right: 5px;
+    padding-left: 0px;
     width: fit-content;
     border-right: .40em solid rgb(212,212,212); /* The typewriter cursor */
-    animation: 
-        blink-caret .75s step-end infinite;
+    /*animation: 
+        blink-caret .75s step-end infinite;*/
+}
+div.text span:not(.cursor) {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    padding-bottom: 0 !important;
+    
 }
 
 body input.hiddeninput {
