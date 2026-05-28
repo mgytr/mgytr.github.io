@@ -298,7 +298,7 @@ let statsData = null;
 
 async function fetchStats() {
     try {
-        const response = await fetch("https://pcstats.mgyt.xyz/get");
+        const response = await fetch("https://pcstats.mgytr.top/get");
         statsData = await response.json();
     } catch (error) {
         console.error("Failed to fetch system stats:", error);
